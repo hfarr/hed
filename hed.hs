@@ -21,7 +21,7 @@ similarly.
 
 -}
 
-{-# OPTIONS -Wall -Wno-unused-imports #-}
+--{-# OPTIONS -Wall -Wno-unused-imports #-}
 
 module LineEditor where
 
@@ -91,12 +91,13 @@ pureTail xs = xs
 main :: IO ()
 main = do hSetBuffering stdout NoBuffering
           args <- getArgs
-          putStrLn "Line Editor\n"
+          --putStrLn "Line Editor\n"
           if length args > 0 then
             do fileText <- readFile (head args)
                commandLoop [begin (lines fileText)]
           else  
             commandLoop [begin []]
+
 
 -- editList is guaranteed to have at least one element
 -- this is not pure by any stretch of the imagination
